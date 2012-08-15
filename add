@@ -1,0 +1,3 @@
+# Add a column of output given to this command
+# e.g. "du *|cut -f1|add" will give a sum of sizes in a directory
+awk '{total = total + $1}END{print total}'

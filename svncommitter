@@ -1,0 +1,15 @@
+#!/bin/env groovy
+
+def fileName=args[0]
+def svnLogCommand = "svn log -v --xml -l 5 " + fileName
+def proc = svnLogCommand.execute()
+def logText = proc.in.text
+
+def log = new XmlSlurper().parseText(logText)
+
+def authors = []
+
+log.logentry.author.each {
+	authors.add(it.text())
+}
+println fileName + ":" +  authors.unique().join(',')

@@ -1,0 +1,7 @@
+#!/bin/bash
+########################################################
+# Cleans un-versioned files from a SVN working directory
+# No more "?" files when you run a svn stat !
+########################################################
+
+svn status|egrep "^\?"|awk '{print $2}'|xargs rm -rf

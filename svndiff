@@ -1,0 +1,22 @@
+#!/bin/sh
+
+##############################################################
+## Uses Vim to show a visual diff for modified files for SVN
+## Put the file in /usr/local/bin as root
+## chmod 755 svndiff to give it execute permissions
+##############################################################
+
+PROGNAME=`basename $0`
+CURDIR=$PWD
+
+if [ $# != 1 ]
+then
+    echo "Usage:  $PROGNAME <filename>"
+    exit 1
+else
+	FILEDIR=`dirname $1`	
+	CURFILE=`basename $1`
+	OLDFILE=$FILEDIR/.svn/text-base/$CURFILE.svn-base
+	vimdiff $OLDFILE $1
+fi
+
