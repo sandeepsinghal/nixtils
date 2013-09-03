@@ -1,5 +1,5 @@
 #!/bin/env groovy
-
+// Needs to have groovy installed on the system
 def fileName=args[0]
 def svnLogCommand = "svn log -v --xml -l 5 " + fileName
 def proc = svnLogCommand.execute()
